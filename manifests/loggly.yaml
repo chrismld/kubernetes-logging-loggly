@@ -42,7 +42,7 @@ data:
 
     <match **>
       @type loggly
-      loggly_url https://logs-01.loggly.com/inputs/#{ENV.fetch('TOKEN')}
+      loggly_url https://logs-01.loggly.com/inputs/#{ENV.fetch('TOKEN')}/
     </match>
   containers.conf: |
     <source>
@@ -81,6 +81,11 @@ data:
         flush_interval 5
         timeout_label @NORMAL
       </filter>
+
+      <match **>
+        @type loggly
+        loggly_url https://logs-01.loggly.com/inputs/#{ENV.fetch('TOKEN')}/tag/application
+      </match>
     </label>
   systemd.conf: |
     <source>
@@ -153,6 +158,11 @@ data:
           stream_name ${tag}-${record["hostname"]}
         </record>
       </filter>
+
+      <match **>
+        @type loggly
+        loggly_url https://logs-01.loggly.com/inputs/#{ENV.fetch('TOKEN')}/tag/dataplane
+      </match>
     </label>
   host.conf: |
     <source>
@@ -207,6 +217,11 @@ data:
           stream_name ${tag}-${record["host"]}
         </record>
       </filter>
+
+      <match **>
+        @type loggly
+        loggly_url https://logs-01.loggly.com/inputs/#{ENV.fetch('TOKEN')}/tag/host
+      </match>
     </label>
 ---
 apiVersion: apps/v1
