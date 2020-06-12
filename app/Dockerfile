@@ -1,12 +1,11 @@
-FROM golang:1.14.4
-RUN mkdir /app 
-ADD . /app/ 
-WORKDIR /app 
+FROM golang:1.14.4 as builder
+WORKDIR /app/
 RUN go get "github.com/sirupsen/logrus"
-RUN go build -o main . 
+COPY main.go . 
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main .
 
 FROM alpine:3.12.0
-RUN apk --no-cache add ca-certificates
 WORKDIR /root/
-COPY --from=0 /app .
+RUN apk --no-cache add ca-certificates
+COPY --from=builder /app/main .
 CMD ["./main"]

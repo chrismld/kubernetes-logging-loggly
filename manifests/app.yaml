@@ -16,6 +16,7 @@ spec:
       containers:
       - name: golang-api
         image: christianhxc/golang-api:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
 ---

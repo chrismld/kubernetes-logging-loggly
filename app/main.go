@@ -22,11 +22,6 @@ func main() {
 			"number": 122,
 		}).Warn("The group's number increased tremendously!")
 
-		log.WithFields(log.Fields{
-			"omg":    true,
-			"number": 100,
-		}).Fatal("The ice breaks!")
-
 		fmt.Fprintf(w, "Hello World!\n")
 	})
 
