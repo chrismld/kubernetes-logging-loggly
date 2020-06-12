@@ -88,7 +88,6 @@ data:
         multiline_start_regexp /^\S/
         separator ""
         flush_interval 5
-        timeout_label @NORMAL
       </filter>
 
       <match **>
