@@ -51,7 +51,7 @@ data:
 
     <match **>
       @type loggly
-      loggly_url https://logs-01.loggly.com/inputs/#{ENV.fetch('TOKEN')}/
+      loggly_url https://logs-01.loggly.com/inputs/#{ENV['TOKEN']}/
     </match>
   containers.conf: |
     <source>
@@ -93,7 +93,7 @@ data:
 
       <match **>
         @type loggly
-        loggly_url https://logs-01.loggly.com/inputs/#{ENV.fetch('TOKEN')}/tag/application
+        loggly_url https://logs-01.loggly.com/inputs/#{ENV['TOKEN']}/tag/application
       </match>
     </label>
   systemd.conf: |
@@ -170,7 +170,7 @@ data:
 
       <match **>
         @type loggly
-        loggly_url https://logs-01.loggly.com/inputs/#{ENV.fetch('TOKEN')}/tag/dataplane
+        loggly_url https://logs-01.loggly.com/inputs/#{ENV['TOKEN']}/tag/dataplane
       </match>
     </label>
   host.conf: |
@@ -229,7 +229,7 @@ data:
 
       <match **>
         @type loggly
-        loggly_url https://logs-01.loggly.com/inputs/#{ENV.fetch('TOKEN')}/tag/host
+        loggly_url https://logs-01.loggly.com/inputs/#{ENV['TOKEN']}/tag/host
       </match>
     </label>
 ---
